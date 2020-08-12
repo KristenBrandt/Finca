@@ -3,7 +3,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer, StyleSheet, Text, Button, View, Image, TouchableOpacity, } from 'react-native';
 
-import logo from './assets/logo.png'
+import { CreateStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
+import logo from "./assets/logo.png"
+import login from './screens/login'
+import register from './screens/register'
 
 
 export default function App() {
@@ -12,14 +15,15 @@ export default function App() {
     <StatusBar style="auto" />
       <Image source={logo} style={{marginBottom: 50, width: 370, height: 400 }} />
       <TouchableOpacity style={styles.button}>
-        <Text style={{ fontSize: 28, fontFamily: 'Calibri' }} >Login</Text>
+        <Text style={{ fontSize: 28, fontFamily: 'Arial' }} >Ingresar</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <Text style={{ fontSize: 28, fontFamily: 'Calibri'}} >Usuario Nuevo</Text>
+        <Text style={{ fontSize: 28, fontFamily: 'Arial'}} >Usuario Nuevo</Text>
       </TouchableOpacity>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 30,
     backgroundColor: "#DDDDDD",
-    padding: 3,
+    padding:10,
     borderRadius: 50,
     height: 50,
     width: 250,

@@ -1,29 +1,25 @@
-import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, Button, View, Image, TouchableOpacity, } from 'react-native';
-import logo from './assets/logo.png'
-import 'react-native-gesture-handler';
+import React, { Component } from "react";
+import {
+    View,
+    Text,
+    StyleSheet
+} from "react-native";
 
-
-function Register() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Register</Text>
-    </View>
-  );
+class register extends Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text>register</Text>
+            </View>
+        );
+    }
 }
+export default register;
 
-const Stack = createStackNavigator();
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Register" component={Register} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-
-export default App;
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+});
