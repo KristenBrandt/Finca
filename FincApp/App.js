@@ -1,47 +1,51 @@
-import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
+import{createAppContainer} from "react-navigation";
+import { createStackNavigator } from 'react-navigation-stack';
 import React from 'react';
-import { NavigationContainer, StyleSheet, Text, Button, View, Image, TouchableOpacity, } from 'react-native';
-
-import { CreateStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
-import logo from "./assets/logo.png"
-import login from './screens/login'
-import register from './screens/register'
-
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-    <StatusBar style="auto" />
-      <Image source={logo} style={{marginBottom: 50, width: 370, height: 400 }} />
-      <TouchableOpacity style={styles.button}>
-        <Text style={{ fontSize: 28, fontFamily: 'Arial' }} >Ingresar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={{ fontSize: 28, fontFamily: 'Arial'}} >Usuario Nuevo</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+import 'react-native-gesture-handler';
+import home from './screens/home';
+import login from './screens/login';
+import registrations from "./screens/registrations";
+import menu from "./screens/menu";
+import cc from "./screens/cc"
+import personal from "./screens/personal"
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 3,
-    backgroundColor: '#283618',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    alignItems: 'center',
-    margin: 30,
-    backgroundColor: "#DDDDDD",
-    padding:10,
-    borderRadius: 50,
-    height: 50,
-    width: 250,
-    borderColor: 'black',
-    fontSize: 50,
-    backgroundColor: '#fefae0',
-  },
-});
+
+const stackNavigator = createStackNavigator({
+    home:{screen: home,
+    navigationOptions:{
+    header:null,
+        headerShown:'false'}
+    },
+    login:{screen:login,
+    navigationOptions:{
+        headerShown:'false',
+        header:null,}
+    },
+    registrations:{screen:registrations,
+        navigationOptions:{
+            headerShown:'false',
+            header:null,}
+    },
+    menu:{screen:menu,
+        navigationOptions:{
+            headerShown:'false',
+            header:null,}
+    },
+    cc:{screen:cc,
+        navigationOptions:{
+            headerShown:'false',
+            header:null,}
+    },
+    personal:{screen:personal,
+        navigationOptions:{
+            headerShown:'false',
+            header:null,}
+    },
+    initialRouteName:home
+})
+
+const App = createAppContainer(stackNavigator)
+export default App
+
+
