@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import {Image, Text, TouchableOpacity, View,StyleSheet,Button} from "react-native";
+import {Image, Text, TouchableOpacity, View,StyleSheet} from "react-native";
 import logo from "../assets/logo.png";
 import login from "./login";
 

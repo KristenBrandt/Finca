@@ -1,7 +1,7 @@
-import React,{useState} from 'react';
-import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text , View} from 'react-native';
 import {StatusBar} from "expo-status-bar";
-import logo from "../assets/logo.png";
+
 
 const cc =({navigation})=> {
     return (

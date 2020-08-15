@@ -14,8 +14,9 @@ import personal from "./screens/personal"
 const stackNavigator = createStackNavigator({
     home:{screen: home,
     navigationOptions:{
-    header:null,
-        headerShown:'false'}
+        headerMode : 'none',
+        headerShown:'false',
+        header:null}
     },
     login:{screen:login,
     navigationOptions:{
