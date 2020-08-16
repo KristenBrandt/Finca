@@ -12,7 +12,7 @@ const registrations = ({navigation})=> {
     const [Contrasena1, setContrasena1] = useState('Contraseña');
     const [Contrasena2, setContrasena2] = useState('Confirmar Contraseña');
     const [claveacceso, setClaveAcesso] = useState('Clave Acceso');
-    function newUser() {
+    function newUser(Nombre,Apellido,Contrasena1,claveacceso) {
         existingUsers.push( {Nombre:Nombre ,Apellido :Apellido,Contrasena1:Contrasena1,claveacceso:claveacceso});
 
     }

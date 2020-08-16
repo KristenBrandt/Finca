@@ -6,12 +6,12 @@ import back from "../assets/back.png";
 import {existingUsers} from "../users"
 
 
-
 const login =({navigation})=> {
     const [Usuario, setUsuario] = useState('Usuario');
     const [Contrasena, setContrasena] = useState('Contrasena');
+
     function ingresar(Usuario,Contrasena){
-        if (Usuario === existingUsers.find(users => users.Nombre ) && Contrasena === existingUsers.find(users => users.Contrasena1)) {
+        if (existingUsers.find(users => users.Nombre === Usuario) && existingUsers.find(users => users.Contrasena1 === Contrasena )) {
             navigation.navigate('menu')
         }}
 
