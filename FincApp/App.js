@@ -10,7 +10,6 @@ import cc from "./screens/cc"
 import personal from "./screens/personal"
 
 
-
 const stackNavigator = createStackNavigator({
     home:{screen: home,
     navigationOptions:{

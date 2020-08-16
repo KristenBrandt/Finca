@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 import back from "../assets/back.png";
 
 
+
 const login =({navigation})=> {
     const [Usuario, setUsuario] = useState('Usuario');
     const [Contrasena, setContrasena] = useState('Contrasena');
