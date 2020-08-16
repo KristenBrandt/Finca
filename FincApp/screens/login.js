@@ -3,12 +3,17 @@ import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput} from 
 import {StatusBar} from "expo-status-bar";
 import logo from "../assets/logo.png";
 import back from "../assets/back.png";
+import {existingUsers} from "../users"
 
 
 
 const login =({navigation})=> {
     const [Usuario, setUsuario] = useState('Usuario');
     const [Contrasena, setContrasena] = useState('Contrasena');
+    function ingresar(Usuario,Contrasena){
+        if (Usuario === existingUsers.find(users => users.Nombre ) && Contrasena === existingUsers.find(users => users.Contrasena1)) {
+            navigation.navigate('menu')
+        }}
 
     return(
         <View style={styles.container} >
@@ -20,16 +25,16 @@ const login =({navigation})=> {
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Usuario'}
-                           onChangeText = {(user)=>setUsuario()}
+                           onChangeText = {(user)=>setUsuario(user)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Contraseña'}
-                           onChangeText = {(password)=>setContrasena()}
+                           onChangeText = {(password)=>setContrasena(password)}
                 />
             </TouchableOpacity>
-            < TouchableOpacity onPress={()=>navigation.navigate('menu')}>
+            < TouchableOpacity onPress={ingresar(Usuario,Contrasena)}>
                 <Text style={styles.button}  >LogIn</Text>
             </TouchableOpacity>
 
