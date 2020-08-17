@@ -15,10 +15,10 @@ const menu =({navigation})=> {
                 <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 100}}/>
             </TouchableOpacity>
             < TouchableOpacity onPress={() => navigation.navigate('personal')} >
-                <Image source={personal} style={{borderRadius:50,margin:25}}/>
+                <Image source={personal} style={{height: 200, width: 200,borderRadius:50,margin:25}}/>
             </TouchableOpacity>
             < TouchableOpacity onPress={() => navigation.navigate('cc')}>
-                <Image source={cc} style={{borderRadius:50,margin:25}}/>
+                <Image source={cc} style={{height: 200,width: 200,borderRadius:50,margin:25}}/>
             </TouchableOpacity>
         </View>
     );
@@ -30,17 +30,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#283618',
         justifyContent: 'center',
         alignItems: 'center'
-    },
-    button:{
-        margin: 30,
-        paddingHorizontal: 80,
-        borderRadius: 50,
-        height: 200,
-        width: 200,
-        borderColor: 'black',
-        fontSize: 20,
-        color: '#283618',
-        backgroundColor: "#fefae0"
     }
 })
 

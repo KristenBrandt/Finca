@@ -34,7 +34,7 @@ const login =({navigation})=> {
                            onChangeText = {(password)=>setContrasena(password)}
                 />
             </TouchableOpacity>
-            < TouchableOpacity onPress={ingresar(Usuario,Contrasena)}>
+            < TouchableOpacity onPress={() => ingresar(Usuario,Contrasena)}>
                 <Text style={styles.button}  >LogIn</Text>
             </TouchableOpacity>
 
