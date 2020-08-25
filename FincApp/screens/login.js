@@ -31,6 +31,7 @@ const login =({navigation})=> {
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Contraseña'}
+                           secureTextEntry = {true}
                            onChangeText = {(password)=>setContrasena(password)}
                 />
             </TouchableOpacity>

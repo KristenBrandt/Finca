@@ -9,11 +9,12 @@ import {existingUsers} from "../users"
 const registrations = ({navigation})=> {
     const [Nombre, setNombre] = useState('Nombre');
     const [Apellido, setApellido] = useState('Apellido');
+    const [User, setUser] = useState('Usuario');
     const [Contrasena1, setContrasena1] = useState('Contraseña');
     const [Contrasena2, setContrasena2] = useState('Confirmar Contraseña');
     const [claveacceso, setClaveAcesso] = useState('Clave Acceso');
-    function newUser(Nombre,Apellido,Contrasena1,claveacceso) {
-        existingUsers.push( {Nombre:Nombre ,Apellido :Apellido,Contrasena1:Contrasena1,claveacceso:claveacceso});
+    function newUser(Nombre,Apellido,User,Contrasena1,claveacceso) {
+        existingUsers.push( {Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
 
     }
 
@@ -37,19 +38,28 @@ const registrations = ({navigation})=> {
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
+                           placeholder={'Usuario'}
+                           onChangeText = {(user)=>setUser(user)}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
                            placeholder={'Contraseña'}
+                           secureTextEntry = {true}
                            onChangeText = {(ps1)=>setContrasena1(ps1)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Confirmar Contraseña'}
+                           secureTextEntry = {true}
                            onChangeText = {(ps2)=>setContrasena2(ps2)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Clave Acesso'}
+                           secureTextEntry = {true}
                            onChangeText = {(clave)=>setClaveAcesso(clave)}
                 />
             </TouchableOpacity>
