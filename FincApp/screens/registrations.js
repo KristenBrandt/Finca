@@ -1,5 +1,5 @@
 import React, { Component ,useState} from 'react';
-import {Image, Text, TouchableOpacity, View, StyleSheet, Button, TextInput} from "react-native";
+import {Alert,Image, Text, TouchableOpacity, View, StyleSheet, Button, TextInput} from "react-native";
 import {StatusBar} from "expo-status-bar";
 import back from "../assets/back.png";
 import {existingUsers} from "../users"
@@ -13,9 +13,40 @@ const registrations = ({navigation})=> {
     const [Contrasena1, setContrasena1] = useState('Contraseña');
     const [Contrasena2, setContrasena2] = useState('Confirmar Contraseña');
     const [claveacceso, setClaveAcesso] = useState('Clave Acceso');
-    function newUser(Nombre,Apellido,User,Contrasena1,claveacceso) {
-        existingUsers.push( {Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
 
+
+    function handleConfirmPassword(Contrasena1, Contrasena2) {
+      if (Contrasena1 !== Contrasena2) {
+        console.log("No son iguales", Contrasena1, Contrasena2)
+        return(
+           <View>
+           <Text style = {styles.text} Sus contraseñas no son iguales/>
+           </View>
+        )
+      }
+        else{
+          if(Contrasena1 === "" || Contrasena2 === ""){
+            console.log("Estan vacias")
+            return(
+               <View>
+               <Text Porfavor ingrese una contraseña/>
+               </View>
+            )
+            }else{
+            console.log("Son iguales");
+
+
+         }
+          }
+      }
+
+    function newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso) {
+      alert("Error: No se pudo registrar el usuario", "No se pudo registrar el usuario");
+      //if(contraseniavalida, usuariovalido, claveaccesovalida){//
+        existingUsers.push( {Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
+      //}else{
+
+      //}
     }
 
     return(
@@ -47,6 +78,7 @@ const registrations = ({navigation})=> {
                            placeholder={'Contraseña'}
                            secureTextEntry = {true}
                            onChangeText = {(ps1)=>setContrasena1(ps1)}
+
                 />
             </TouchableOpacity>
             <TouchableOpacity >
@@ -54,8 +86,11 @@ const registrations = ({navigation})=> {
                            placeholder={'Confirmar Contraseña'}
                            secureTextEntry = {true}
                            onChangeText = {(ps2)=>setContrasena2(ps2)}
+                           onBlur = {handleConfirmPassword(Contrasena1, Contrasena2)}
+
                 />
             </TouchableOpacity>
+
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Clave Acesso'}
@@ -63,7 +98,7 @@ const registrations = ({navigation})=> {
                            onChangeText = {(clave)=>setClaveAcesso(clave)}
                 />
             </TouchableOpacity>
-            < TouchableOpacity onPress={newUser()}>
+            < TouchableOpacity onPress={()=>newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso)}>
                 <Text style={styles.button}  >Registrar</Text>
             </TouchableOpacity>
         </View>
@@ -101,7 +136,12 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         fontSize: 20,
         backgroundColor: '#fefae0'
-    }
+    },
+    text: {
+      color: '#fefae0',
+      fontSize: 15
+
+   }
 });
 
 export default registrations

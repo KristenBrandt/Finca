@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput} from 'react-native';
+import {Alert,Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput} from 'react-native';
 import {StatusBar} from "expo-status-bar";
 import logo from "../assets/logo.png";
 import back from "../assets/back.png";
@@ -11,8 +11,11 @@ const login =({navigation})=> {
     const [Contrasena, setContrasena] = useState('Contrasena');
 
     function ingresar(Usuario,Contrasena){
-        if (existingUsers.find(users => users.Nombre === Usuario) && existingUsers.find(users => users.Contrasena1 === Contrasena )) {
-            navigation.navigate('menu')
+        if (existingUsers.find(users => users.User === Usuario) && existingUsers.find(users => users.Contrasena1 === Contrasena )) {
+            navigation.navigate('menu');
+
+        }else{
+           alert("Error: No se encontro un usuario con esas especificaciones", "No se encontro un usuario con esas especificaciones");
         }}
 
     return(
