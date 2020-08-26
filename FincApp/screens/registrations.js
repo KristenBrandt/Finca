@@ -7,12 +7,12 @@ import {existingUsers} from "../users"
 
 
 const registrations = ({navigation})=> {
-    const [Nombre, setNombre] = useState('Nombre');
-    const [Apellido, setApellido] = useState('Apellido');
-    const [User, setUser] = useState('Usuario');
+    const [Nombre, setNombre] = useState('');
+    const [Apellido, setApellido] = useState('');
+    const [User, setUser] = useState('');
     const [Contrasena1, setContrasena1] = useState('Contraseña');
     const [Contrasena2, setContrasena2] = useState('Confirmar Contraseña');
-    const [claveacceso, setClaveAcesso] = useState('Clave Acceso');
+    const [claveacceso, setClaveAcesso] = useState('');
 
 
     function handleConfirmPassword(Contrasena1, Contrasena2) {
