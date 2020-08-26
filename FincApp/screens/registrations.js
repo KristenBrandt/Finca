@@ -18,35 +18,34 @@ const registrations = ({navigation})=> {
     function handleConfirmPassword(Contrasena1, Contrasena2) {
       if (Contrasena1 !== Contrasena2) {
         console.log("No son iguales", Contrasena1, Contrasena2)
-        return(
-           <View>
-           <Text style = {styles.text} Sus contraseñas no son iguales/>
-           </View>
-        )
       }
         else{
           if(Contrasena1 === "" || Contrasena2 === ""){
             console.log("Estan vacias")
-            return(
-               <View>
-               <Text Porfavor ingrese una contraseña/>
-               </View>
-            )
             }else{
             console.log("Son iguales");
-
-
          }
           }
       }
 
     function newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso) {
-      alert("Error: No se pudo registrar el usuario", "No se pudo registrar el usuario");
-      //if(contraseniavalida, usuariovalido, claveaccesovalida){//
-        existingUsers.push( {Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
-      //}else{
-
-      //}
+      if(Nombre === "" || Apellido === "" || User === "" || Contrasena1 === "" || Contrasena2 === ""){
+         alert("Error: No se pudo registrar el usuario hay alguna casilla vacia", "No se pudo registrar el usuario");
+      }else{
+         if (Contrasena1 !== Contrasena2) {
+            alert("Error: Sus contraseñas no son iguales")
+         }
+           else{
+             //ver si hay un usario existente con este nombre
+             if(existingUsers.find(users => users.User === User)){
+                alert("Error: Ya hay un usario con ese username", "Ya hay un usuario con ese username")
+                }
+                else{
+                   existingUsers.push({Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
+                   alert("Registrado: Usuario Registrado", "Usuario Regstrado");
+                }
+             }
+      }
     }
 
     return(
