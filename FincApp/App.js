@@ -11,6 +11,7 @@ import registrations from "./screens/registrations";
 import menu from "./screens/menu";
 import cc from "./screens/cc"
 import personal from "./screens/personal"
+import ventas from "./screens/ventas"
 
 
 const stackNavigator = createStackNavigator({
@@ -41,6 +42,11 @@ const stackNavigator = createStackNavigator({
             header:null,}
     },
     personal:{screen:personal,
+        navigationOptions:{
+            headerShown:'false',
+            header:null,}
+    },
+    ventas:{screen:ventas,
         navigationOptions:{
             headerShown:'false',
             header:null,}

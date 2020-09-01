@@ -15,7 +15,7 @@ const home = ({navigation})=> {
     return(
         <View style={styles.container} >
             <StatusBar style="auto" />
-            <Image source={logo} style={{marginBottom: 150, width: 440, height: 399 }} />
+            <Image source={logo} style={{marginBottom: 50, width: 440, height: 399 }} />
             <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('login')}>
                 <Text style={{ fontSize: 30,color:'#283618'}} >Ingresar</Text>
             </TouchableOpacity>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        margin: 10,
+        margin: 15,
         paddingHorizontal: 5,
         borderRadius: 50,
         height: 50,

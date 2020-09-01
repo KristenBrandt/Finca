@@ -12,7 +12,7 @@ const cc =({navigation})=> {
 
     return (
         <View style={styles.container} >
-            <TouchableOpacity onPress={()=>navigation.navigate('home')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('menu')}>
                 <Image source ={back} style ={{width:50, height:50,paddingHorizontal:5,marginBottom:50}}/>
             </TouchableOpacity>
             <TouchableOpacity>
