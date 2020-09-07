@@ -24,7 +24,7 @@ const login =({navigation})=> {
             <TouchableOpacity onPress={()=>navigation.navigate('home')}>
                 <Image source ={back} style ={{width:50, height:50,paddingHorizontal:5}}/>
             </TouchableOpacity>
-            <Image source={logo} style={{marginBottom: 50, width: 440, height: 399 }} />
+            <Image source={logo} style={{marginBottom: 40, width: 440, height: 399 }} />
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Usuario'}
@@ -38,8 +38,8 @@ const login =({navigation})=> {
                            onChangeText = {(password)=>setContrasena(password)}
                 />
             </TouchableOpacity>
-            < TouchableOpacity onPress={() => ingresar(Usuario,Contrasena)}>
-                <Text style={styles.button}  >LogIn</Text>
+            < TouchableOpacity style={styles.button} onPress={() => ingresar(Usuario,Contrasena)}>
+                <Text style={{ fontSize: 30,color:'#fefae0'}}>Ingresar</Text>
             </TouchableOpacity>
 
         </View>
@@ -54,17 +54,17 @@ const styles = StyleSheet.create({
       alignItems: 'center'
   },
     button:{
-      alignItems: 'center',
+        color: '#fefae0',
+        backgroundColor: "#606C38",
+        alignItems: 'center',
         justifyContent: 'center',
         margin: 30,
-        paddingHorizontal: 80,
+        paddingHorizontal: 5,
         borderRadius: 50,
         height: 50,
         width: 250,
         borderColor: 'black',
         fontSize: 30,
-        color: '#fefae0',
-        backgroundColor: "#606C38"
     },
     input:{
         alignItems: 'center',

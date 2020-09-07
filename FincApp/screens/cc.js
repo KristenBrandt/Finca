@@ -39,8 +39,8 @@ const cc =({navigation})=> {
                            onChange = {(centro)=>setCentroCosto(centro)}
                 />
             </TouchableOpacity>
-            < TouchableOpacity>
-                <Text style={styles.button}  >Ingresar datos</Text>
+            < TouchableOpacity style={styles.button}>
+                <Text  style={{ fontSize: 22,color:'#fefae0'}} >Ingresar datos</Text>
             </TouchableOpacity>
 
         </View>
@@ -55,16 +55,16 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        margin: 25,
-        paddingHorizontal: 30,
-        paddingTop: 20,
+        justifyContent: 'center',
+        margin: 30,
+        paddingHorizontal: 55,
         borderRadius: 50,
         height: 70,
         width: 270,
         borderColor: 'black',
-        fontSize: 25,
+        fontSize: 20,
         color: '#fefae0',
-        backgroundColor: '#606C38',
+        backgroundColor: "#606C38"
     },
     input:{
         alignItems: 'center',

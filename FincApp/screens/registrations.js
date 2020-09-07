@@ -42,7 +42,7 @@ const registrations = ({navigation})=> {
                 }
                 else{
                    existingUsers.push({Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
-                   alert("Registrado: Usuario Registrado", "Usuario Regstrado");
+                   alert("Registrado: Usuario Registrado, ya puede ingresar con este usuario", "Registrado: Usuario Registrado, ya puede ingresar con este usuario");
                 }
              }
       }
@@ -52,29 +52,29 @@ const registrations = ({navigation})=> {
         <View style={styles.container}>
             <StatusBar style="auto" />
             <TouchableOpacity onPress={()=>navigation.navigate('home')}>
-                <Image source ={back} style ={{width:50, height:50,paddingHorizontal:5,marginBottom:130}}/>
+                <Image source ={back} style ={{width:50, height:50,paddingHorizontal:5,marginBottom:100}}/>
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Nombre'}
+                           placeholder={'Nombre*'}
                            onChangeText = {(nom)=>setNombre(nom)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Apellido'}
+                           placeholder={'Apellido*'}
                            onChangeText = {(last)=>setApellido(last)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Usuario'}
+                           placeholder={'Usuario*'}
                            onChangeText = {(user)=>setUser(user)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Contraseña'}
+                           placeholder={'Contraseña*'}
                            secureTextEntry = {true}
                            onChangeText = {(ps1)=>setContrasena1(ps1)}
 
@@ -82,7 +82,7 @@ const registrations = ({navigation})=> {
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Confirmar Contraseña'}
+                           placeholder={'Confirmar Contraseña*'}
                            secureTextEntry = {true}
                            onChangeText = {(ps2)=>setContrasena2(ps2)}
                            onBlur = {handleConfirmPassword(Contrasena1, Contrasena2)}
@@ -97,8 +97,8 @@ const registrations = ({navigation})=> {
                            onChangeText = {(clave)=>setClaveAcesso(clave)}
                 />
             </TouchableOpacity>
-            < TouchableOpacity onPress={()=>newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso)}>
-                <Text style={styles.button}  >Registrar</Text>
+            < TouchableOpacity style={styles.button} onPress={()=>newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso)}>
+                <Text  style={{ fontSize: 30,color:'#fefae0'}} >Registrar</Text>
             </TouchableOpacity>
         </View>
     )
