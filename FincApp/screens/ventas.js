@@ -4,17 +4,38 @@ import {StatusBar} from "expo-status-bar";
 import logo from "../assets/logo.png";
 import back from "../assets/back.png";
 
+
 const ventas =({navigation})=> {
+    //primeros datos
+    const [Fecha, setFecha] = useState('')
+    const [Envio,setEnvio] = useState('');
     const [Racimos, setRacimos] = useState('');
     const [Pepas, setPepas] = useState('');
+    //segundos datos
+
     const [Penalizacion, setPenalizacion] = useState('');
     const [Total, setTotal] = useState('')
     const [Tonelada, setToneladas] = useState('')
+    //terceros datos
+
     return (
         <View style={styles.container} >
             <StatusBar style="auto" />
             <TouchableOpacity onPress={() => navigation.navigate('menu')}>
                 <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 25}}/>
+            </TouchableOpacity>
+            <Text style = {{color:'#bc6c25',fontSize: 25}}>Fruta enviada de la finca</Text>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
+                           placeholder={'Fecha'}
+                           onChangeText = {(fecha)=>setFecha(fecha)}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
+                           placeholder={'Número de Envio'}
+                           onChangeText = {(envio)=>setEnvio(envio)}
+                />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
@@ -24,8 +45,16 @@ const ventas =({navigation})=> {
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Toneladas'}
-                           onChangeText = {(toneladas)=>setToneladas(toneladas)}
+                           placeholder={'Número de Pepas'}
+                           onChangeText = {(pepa)=>setPepas(pepa)}
+                />
+            </TouchableOpacity>
+            <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Datos del recibo </Text>
+            <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Fruta Extractora Palmas del Ixcan</Text>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
+                           placeholder={'Número de Racimos'}
+                           onChangeText = {(racimos)=>setRacimos(racimos)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
@@ -36,13 +65,44 @@ const ventas =({navigation})=> {
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Penalización'}
-                           onChangeText = {(penalizacion)=>setPenalizacion(penalizacion)}
+                           placeholder={'Peso KG'}
+                           onChangeText = {(pepa)=>setPepas(pepa)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Total'}
+                           placeholder={'Peso B'}
+                           onChangeText = {(pepa)=>setPepas(pepa)}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
+                           placeholder={'Peso T'}
+                           onChangeText = {(pepa)=>setPepas(pepa)}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
+                           placeholder={'Peso N'}
+                           onChangeText = {(pepa)=>setPepas(pepa)}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
+                           placeholder={'Toneladas'}
+                           onChangeText = {(toneladas)=>setToneladas(toneladas)}
+                />
+            </TouchableOpacity>
+            <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Penalización</Text>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
+                           placeholder={'Pasados'}
+                           onChangeText = {(pasados)=>setPasados(pasados)}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
+                           placeholder={'Sob/Maduro'}
                            onChangeText = {(total)=>setTotal(total)}
                 />
             </TouchableOpacity>
@@ -75,7 +135,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 5,
-        margin: 15,
+        margin: 10,
         borderRadius: 50,
         height: 50,
         width: 250,
