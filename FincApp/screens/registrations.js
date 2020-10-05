@@ -74,6 +74,13 @@ const registrations = ({navigation})=> {
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
+                           placeholder={'Correo Electrónico'}
+                           secureTextEntry = {true}
+                           onChangeText = {(clave)=>setClaveAcesso(clave)}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity >
+                <TextInput style={styles.input}
                            placeholder={'Contraseña*'}
                            secureTextEntry = {true}
                            onChangeText = {(ps1)=>setContrasena1(ps1)}
@@ -87,14 +94,6 @@ const registrations = ({navigation})=> {
                            onChangeText = {(ps2)=>setContrasena2(ps2)}
                            onBlur = {handleConfirmPassword(Contrasena1, Contrasena2)}
 
-                />
-            </TouchableOpacity>
-
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Clave Acesso'}
-                           secureTextEntry = {true}
-                           onChangeText = {(clave)=>setClaveAcesso(clave)}
                 />
             </TouchableOpacity>
             < TouchableOpacity style={styles.button} onPress={()=>newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso)}>
