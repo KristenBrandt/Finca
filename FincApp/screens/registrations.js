@@ -3,6 +3,7 @@ import {Alert,Image, Text, TouchableOpacity, View, StyleSheet, Button, TextInput
 import {StatusBar} from "expo-status-bar";
 import back from "../assets/back.png";
 import {existingUsers} from "../users"
+import { Firebase } from '../Firebase/config';
 
 
 
@@ -46,6 +47,31 @@ const registrations = ({navigation})=> {
                 }
             }
         }
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then((response) => {
+                const uid = response.user.uid
+                const data = {
+                    id: uid,
+                    email,
+                    fullName,
+                };
+                const usersRef = firebase.firestore().collection('users')
+                usersRef
+                    .doc(uid)
+                    .set(data)
+                    .then(() => {
+                        navigation.navigate('Home', {user: data})
+                    })
+                    .catch((error) => {
+                        alert(error)
+                    });
+            })
+            .catch((error) => {
+                alert(error)
+            });
+    }
     }
 
     return(
@@ -142,3 +168,41 @@ const styles = StyleSheet.create({
 });
 
 export default registrations
+
+
+
+export default function RegistrationScreen({navigation}) {
+
+
+    const onRegisterPress = () => {
+        if (Contrasena1 !== Contrasena2) {
+            alert("Passwords don't match.")
+            return
+        }
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then((response) => {
+                const uid = response.user.uid
+                const data = {
+                    id: uid,
+                    email,
+                    fullName,
+                };
+                const usersRef = firebase.firestore().collection('users')
+                usersRef
+                    .doc(uid)
+                    .set(data)
+                    .then(() => {
+                        navigation.navigate('Home', {user: data})
+                    })
+                    .catch((error) => {
+                        alert(error)
+                    });
+            })
+            .catch((error) => {
+                alert(error)
+            });
+    }
+
+}
