@@ -30,22 +30,22 @@ const registrations = ({navigation})=> {
 
     function newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso) {
       if(Nombre === "" || Apellido === "" || User === "" || Contrasena1 === "" || Contrasena2 === ""){
-         alert("Error: No se pudo registrar el usuario hay alguna casilla vacia", "No se pudo registrar el usuario");
-      }else{
-         if (Contrasena1 !== Contrasena2) {
-            alert("Error: Sus contraseñas no son iguales")
-         }
-           else{
-             //ver si hay un usario existente con este nombre
-             if(existingUsers.find(users => users.User === User)){
-                alert("Error: Ya hay un usario con ese username", "Ya hay un usuario con ese username")
+            alert("Error: No se pudo registrar el usuario hay alguna casilla vacia", "No se pudo registrar el usuario");
+        }else{
+            if (Contrasena1 !== Contrasena2) {
+                alert("Error: Sus contraseñas no son iguales")
+            }
+            else{
+                //ver si hay un usario existente con este nombre
+                if(existingUsers.find(users => users.User === User)){
+                    alert("Error: Ya hay un usario con ese username", "Ya hay un usuario con ese username")
                 }
                 else{
-                   existingUsers.push({Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
-                   alert("Registrado: Usuario Registrado, ya puede ingresar con este usuario", "Registrado: Usuario Registrado, ya puede ingresar con este usuario");
+                    existingUsers.push({Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
+                    alert("Registrado: Usuario Registrado, ya puede ingresar con este usuario", "Registrado: Usuario Registrado, ya puede ingresar con este usuario");
                 }
-             }
-      }
+            }
+        }
     }
 
     return(
@@ -74,8 +74,7 @@ const registrations = ({navigation})=> {
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Correo Electrónico'}
-                           secureTextEntry = {true}
+                           placeholder={'Correo Electrónico*'}
                            onChangeText = {(clave)=>setClaveAcesso(clave)}
                 />
             </TouchableOpacity>
@@ -115,9 +114,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 30,
         paddingHorizontal: 55,
-        borderRadius: 50,
+        borderRadius: 20,
         height: 50,
-        width: 250,
+        width: 280,
         borderColor: 'black',
         fontSize: 30,
         color: '#fefae0',
@@ -128,9 +127,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 5,
         margin: 15,
-        borderRadius: 50,
+        borderRadius: 20,
         height: 50,
-        width: 250,
+        width: 280,
         borderColor: 'black',
         fontSize: 20,
         backgroundColor: '#fefae0'

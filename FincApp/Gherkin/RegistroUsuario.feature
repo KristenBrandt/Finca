@@ -1,11 +1,7 @@
-﻿Feature: Addition
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
-	
-@mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+﻿Feature: LogIn Usario con email
+	Quiero poder ingresar a la aplicacion utilizando mi correo electronico
+	@mytag
+	Scenario: Gerente ingresa a el app con su email
+		Given El usuario tiene correo
+		When el gerente ingresa su correo a la applicacion
+		Then la applicacion ingresa a el menu principal

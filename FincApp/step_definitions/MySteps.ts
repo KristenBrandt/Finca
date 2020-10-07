@@ -1,6 +1,7 @@
 import {Given} from 'cucumber'
 import {When} from 'cucumber'
 import {Then} from 'cucumber'
+import {existingUsers} from "../users"
 
 Given(/^el administrador hizo una nueva compra$/, function () {
 
@@ -12,5 +13,15 @@ When(/^el administrador ingresa el costo, el nombre del articulo o servicio comp
 
 });
 Then(/^el dato se ingresa a la base de datos si se encuentra online y si se encuentra offline se sube despues$/, function () {
+
+});
+Given(/^El usuario tiene correo$/, function () {
+
+});
+When(/^el gerente ingresa su correo a la applicacion$/, function () {
+});
+
+
+Then(/^la applicacion ingresa a el menu principal$/, function () {
 
 });

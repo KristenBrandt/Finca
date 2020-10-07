@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput} from 'react-native';
+import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput, ScrollView} from 'react-native';
 import {StatusBar} from "expo-status-bar";
 import logo from "../assets/logo.png";
 import back from "../assets/back.png";
@@ -19,10 +19,11 @@ const ventas =({navigation})=> {
     //terceros datos
 
     return (
+        <ScrollView>
         <View style={styles.container} >
             <StatusBar style="auto" />
             <TouchableOpacity onPress={() => navigation.navigate('menu')}>
-                <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 25}}/>
+                <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 25, marginTop:20}}/>
             </TouchableOpacity>
             <Text style = {{color:'#bc6c25',fontSize: 25}}>Fruta enviada de la finca</Text>
             <TouchableOpacity >
@@ -110,6 +111,7 @@ const ventas =({navigation})=> {
                 <Text  style={{ fontSize: 22,color:'#fefae0'}} >Agregar Venta</Text>
             </TouchableOpacity>
         </View>
+        </ScrollView>
     )
 }
 const styles = StyleSheet.create({
@@ -124,9 +126,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 30,
         paddingHorizontal: 55,
-        borderRadius: 50,
+        borderRadius: 20,
         height: 50,
-        width: 250,
+        width: 280,
         borderColor: 'black',
         color: '#fefae0',
         backgroundColor: "#606C38"
@@ -136,9 +138,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 5,
         margin: 10,
-        borderRadius: 50,
+        borderRadius: 20,
         height: 50,
-        width: 250,
+        width: 280,
         borderColor: 'black',
         fontSize: 20,
         backgroundColor: '#fefae0'

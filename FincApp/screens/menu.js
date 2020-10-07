@@ -13,13 +13,13 @@ const menu =({navigation})=> {
         <View style={styles.container}>
             <StatusBar style="auto"/>
             < TouchableOpacity onPress={() => navigation.navigate('cc')}>
-                <Image source={cc} style={{height: 180,width: 180,borderRadius:50,margin:10}}/>
+                <Image source={cc} style={{height: 180,width: 180,borderRadius:20,margin:10}}/>
             </TouchableOpacity>
             < TouchableOpacity onPress={() => navigation.navigate('personal')} >
-                <Image source={personal} style={{height: 180, width: 180,borderRadius:50,margin:10}}/>
+                <Image source={personal} style={{height: 180, width: 180,borderRadius:20,margin:10}}/>
             </TouchableOpacity>
             < TouchableOpacity onPress={() => navigation.navigate('ventas')}>
-                <Image source={ventas} style={{height: 180,width: 180,borderRadius:50,margin:10}}/>
+                <Image source={ventas} style={{height: 180,width: 180,borderRadius:20,margin:10}}/>
             </TouchableOpacity>
             < TouchableOpacity onPress={() => navigation.navigate('home')}>
                 <Text  style={{ fontSize: 20,color:'#bc6c25', margin:20}} >Cerrar Sesión</Text>
