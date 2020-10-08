@@ -1,9 +1,5 @@
 import{createAppContainer} from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack';
-import React from 'react';
-
-import firebase from "./Firebase";
-
 import 'react-native-gesture-handler';
 import home from './screens/home';
 import login from './screens/login';
