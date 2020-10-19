@@ -18,24 +18,28 @@ const cc =({navigation})=> {
             <TouchableOpacity>
                 <TextInput style = {styles.input}
                            placeholder="Gasto"
+                           placeholderTextColor="#283618"
                            onChange = {(gas)=>setGasto(gas)}
                 />
             </TouchableOpacity>
             <TouchableOpacity>
                 <TextInput style = {styles.input}
                            placeholder="Nombre de Objeto"
+                           placeholderTextColor="#283618"
                            onChange = {(obj)=>setNombre(obj)}
                 />
             </TouchableOpacity>
             <TouchableOpacity>
                 <TextInput style = {styles.input}
                            placeholder="Descripcion"
+                           placeholderTextColor="#283618"
                            onChange = {(desc)=>setDescripcion(desc)}
                 />
             </TouchableOpacity>
             <TouchableOpacity>
                 <TextInput style = {styles.input}
                            placeholder="Centro de Costo"
+                           placeholderTextColor="#283618"
                            onChange = {(centro)=>setCentroCosto(centro)}
                 />
             </TouchableOpacity>

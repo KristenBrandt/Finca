@@ -29,24 +29,28 @@ const ventas =({navigation})=> {
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Fecha'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(fecha)=>setFecha(fecha)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Número de Envio'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(envio)=>setEnvio(envio)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Número de Racimos'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(racimos)=>setRacimos(racimos)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Número de Pepas'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(pepa)=>setPepas(pepa)}
                 />
             </TouchableOpacity>
@@ -55,42 +59,49 @@ const ventas =({navigation})=> {
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Número de Racimos'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(racimos)=>setRacimos(racimos)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Número de Pepas'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(pepa)=>setPepas(pepa)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Peso KG'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(pepa)=>setPepas(pepa)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Peso B'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(pepa)=>setPepas(pepa)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Peso T'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(pepa)=>setPepas(pepa)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Peso N'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(pepa)=>setPepas(pepa)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Toneladas'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(toneladas)=>setToneladas(toneladas)}
                 />
             </TouchableOpacity>
@@ -98,12 +109,14 @@ const ventas =({navigation})=> {
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Pasados'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(pasados)=>setPasados(pasados)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Sob/Maduro'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(total)=>setTotal(total)}
                 />
             </TouchableOpacity>

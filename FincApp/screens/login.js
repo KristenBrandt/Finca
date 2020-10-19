@@ -4,19 +4,48 @@ import {StatusBar} from "expo-status-bar";
 import logo from "../assets/logo.png";
 import back from "../assets/back.png";
 import {existingUsers} from "../users"
+import { firebase } from '../Firebase';
 
 
 const login =({navigation})=> {
-    const [Usuario, setUsuario] = useState('Usuario');
-    const [Contrasena, setContrasena] = useState('Contrasena');
+    const [Usuario, setUsuario] = useState('');
+    const [Contrasena, setContrasena] = useState('');
 
-    function ingresar(Usuario,Contrasena){
+    function ingresar(Usuario,Contrasena) {
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(Usuario, Contrasena)
+            .then((response) => {
+                const uid = response.user.uid
+                const usersRef = firebase.firestore().collection('users')
+                usersRef
+                    .doc(uid)
+                    .get()
+                    .then(firestoreDocument => {
+                        if (!firestoreDocument.exists) {
+                            alert("El usuario con ese email ya no existe.")
+                            return;
+                        }
+                        const user = firestoreDocument.data()
+                        navigation.navigate('menu', {user})
+                    })
+                    .catch(error => {
+                        alert(error)
+                    });
+            })
+            .catch(error => {
+                alert(error)
+            })
+    }
+        /*
         if (existingUsers.find(users => users.User === Usuario) && existingUsers.find(users => users.Contrasena1 === Contrasena )) {
             navigation.navigate('menu');
 
         }else{
            alert("Error: No se encontro un usuario con esas especificaciones", "No se encontro un usuario con esas especificaciones");
         }}
+
+         */
 
     return(
         <View style={styles.container} >
@@ -27,13 +56,15 @@ const login =({navigation})=> {
             <Image source={logo} style={{marginBottom: 40, width: 440, height: 399 }} />
             <TouchableOpacity >
                 <TextInput style={styles.input}
-                           placeholder={'Usuario'}
+                           placeholder={'Email'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(user)=>setUsuario(user)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Contraseña'}
+                           placeholderTextColor="#283618"
                            secureTextEntry = {true}
                            onChangeText = {(password)=>setContrasena(password)}
                 />

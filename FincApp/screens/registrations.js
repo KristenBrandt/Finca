@@ -4,7 +4,7 @@ import {StatusBar} from "expo-status-bar";
 import back from "../assets/back.png";
 import login from "./login";
 import {existingUsers} from "../users"
-import { firebase } from '../firebase';
+import { firebase } from '../Firebase';
 
 
 
@@ -74,10 +74,10 @@ const registrations = ({navigation})=> {
             .catch((error) => {
                 alert(error)
             });
-        
+
         navigation.navigate('login')
     }
-    
+
 
     return(
         <View style={styles.container}>
@@ -88,30 +88,35 @@ const registrations = ({navigation})=> {
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Nombre*'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(nom)=>setNombre(nom)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Apellido*'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(last)=>setApellido(last)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Usuario*'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(user)=>setUser(user)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Correo Electrónico*'}
+                           placeholderTextColor="#283618"
                            onChangeText = {(clave)=>setClaveAcesso(clave)}
                 />
             </TouchableOpacity>
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Contraseña*'}
+                           placeholderTextColor="#283618"
                            secureTextEntry = {true}
                            onChangeText = {(ps1)=>setContrasena1(ps1)}
 
@@ -120,6 +125,7 @@ const registrations = ({navigation})=> {
             <TouchableOpacity >
                 <TextInput style={styles.input}
                            placeholder={'Confirmar Contraseña*'}
+                           placeholderTextColor="#283618"
                            secureTextEntry = {true}
                            onChangeText = {(ps2)=>setContrasena2(ps2)}
                            onBlur = {handleConfirmPassword(Contrasena1, Contrasena2)}
