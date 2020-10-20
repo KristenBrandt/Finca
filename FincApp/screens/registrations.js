@@ -1,54 +1,26 @@
 import React, { Component ,useState} from 'react';
 import {Alert,Image, Text, TouchableOpacity, View, StyleSheet, Button, TextInput} from "react-native";
 import {StatusBar} from "expo-status-bar";
-import back from "../assets/back.png";
+import backimg from "../assets/back.png";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import login from "./login";
-import {existingUsers} from "../users"
+
 import { firebase } from '../Firebase';
 
-
-
-const registrations = ({navigation})=> {
-    const [Nombre, setNombre] = useState('');
-    const [Apellido, setApellido] = useState('');
-    const [User, setUser] = useState('');
-    const [Contrasena1, setContrasena1] = useState('Contraseña');
-    const [Contrasena2, setContrasena2] = useState('Confirmar Contraseña');
+export default function registrations({navigation}){
+    const [Contrasena1, setContrasena1] = useState('');
+    const [Contrasena2, setContrasena2] = useState('');
     const [claveacceso, setClaveAcesso] = useState('');
+    const [FullName,setFullName] = useState('')
 
+    const back = () => {navigation.navigate('home')}
 
-    function handleConfirmPassword(Contrasena1, Contrasena2) {
-      if (Contrasena1 !== Contrasena2) {
-        console.log("No son iguales", Contrasena1, Contrasena2)
-      }
-        else{
-          if(Contrasena1 === "" || Contrasena2 === ""){
-            console.log("Estan vacias")
-            }else{
-            console.log("Son iguales");
-         }
-          }
-      }
+    const registrado = () => {navigation.navigate('login')}
 
-    function newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso) {
-      if(Nombre === "" || Apellido === "" || User === "" || Contrasena1 === "" || Contrasena2 === ""){
-            alert("Error: No se pudo registrar el usuario hay alguna casilla vacia", "No se pudo registrar el usuario");
-        }else{
-            if (Contrasena1 !== Contrasena2) {
-                alert("Error: Sus contraseñas no son iguales")
-            }
-            /*
-            else{
-                //ver si hay un usario existente con este nombre
-                if(existingUsers.find(users => users.User === User)){
-                    alert("Error: Ya hay un usario con ese username", "Ya hay un usuario con ese username")
-                }
-                else{
-                    existingUsers.push({Nombre:Nombre ,Apellido :Apellido, User:User,Contrasena1:Contrasena1,claveacceso:claveacceso});
-                    alert("Registrado: Usuario Registrado, ya puede ingresar con este usuario", "Registrado: Usuario Registrado, ya puede ingresar con este usuario");
-                }
-            }
-            */
+    const onRegisterPress = () => {
+        if (Contrasena1 !== Contrasena2) {
+            Alert("Las contraseñas no son iguales.")
+            return
         }
         firebase
             .auth()
@@ -58,15 +30,14 @@ const registrations = ({navigation})=> {
                 const data = {
                     id: uid,
                     claveacceso,
-                    User,
+                    FullName,
                 };
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
                     .doc(uid)
                     .set(data)
-                    .then(() => {
-                        navigation.navigate('login', {user: data})
-                    })
+                    .then(registrado()
+                    )
                     .catch((error) => {
                         alert(error)
                     });
@@ -74,69 +45,59 @@ const registrations = ({navigation})=> {
             .catch((error) => {
                 alert(error)
             });
-
-        navigation.navigate('login')
     }
+            return (
+                <View style={styles.container}>
+                    <KeyboardAwareScrollView>
+                    <StatusBar style="auto"/>
+                    <TouchableOpacity onPress={() => back()}>
+                        <Image source={backimg} style={{width: 50, height: 50, paddingHorizontal: 5, marginBottom: 100}}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <TextInput style={styles.input}
+                                   placeholder={'Nombre*'}
+                                   placeholderTextColor="#283618"
+                                   value = {FullName}
+                                   onChangeText={(full) => setFullName(full)}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <TextInput style={styles.input}
+                                   placeholder={'Correo Electrónico*'}
+                                   placeholderTextColor="#283618"
+                                   value = {claveacceso}
+                                   onChangeText={(clave) => setClaveAcesso(clave)}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <TextInput style={styles.input}
+                                   placeholder={'Contraseña*'}
+                                   placeholderTextColor="#283618"
+                                   secureTextEntry={true}
+                                   value = {Contrasena1}
+                                   onChangeText={(ps1) => setContrasena1(ps1)}
+
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <TextInput style={styles.input}
+                                   placeholder={'Confirmar Contraseña*'}
+                                   placeholderTextColor="#283618"
+                                   secureTextEntry={true}
+                                   value = {Contrasena2}
+                                   onChangeText={(ps2) => setContrasena2(ps2)}
 
 
-    return(
-        <View style={styles.container}>
-            <StatusBar style="auto" />
-            <TouchableOpacity onPress={()=>navigation.navigate('home')}>
-                <Image source ={back} style ={{width:50, height:50,paddingHorizontal:5,marginBottom:100}}/>
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Nombre*'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(nom)=>setNombre(nom)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Apellido*'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(last)=>setApellido(last)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Usuario*'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(user)=>setUser(user)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Correo Electrónico*'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(clave)=>setClaveAcesso(clave)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Contraseña*'}
-                           placeholderTextColor="#283618"
-                           secureTextEntry = {true}
-                           onChangeText = {(ps1)=>setContrasena1(ps1)}
+                        />
+                    </TouchableOpacity>
+                    < TouchableOpacity style={styles.button}
+                                       onPress={() =>onRegisterPress()}>
+                        <Text style={{fontSize: 30, color: '#fefae0'}}>Registrar</Text>
+                    </TouchableOpacity>
+                    </KeyboardAwareScrollView>
+                </View>
 
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Confirmar Contraseña*'}
-                           placeholderTextColor="#283618"
-                           secureTextEntry = {true}
-                           onChangeText = {(ps2)=>setContrasena2(ps2)}
-                           onBlur = {handleConfirmPassword(Contrasena1, Contrasena2)}
-
-                />
-            </TouchableOpacity>
-            < TouchableOpacity style={styles.button} onPress={()=>newUser(Nombre,Apellido,User,Contrasena1,Contrasena2,claveacceso)}>
-                <Text  style={{ fontSize: 30,color:'#fefae0'}} >Registrar</Text>
-            </TouchableOpacity>
-        </View>
-    )
+            )
 }
 
 const styles = StyleSheet.create({
@@ -172,10 +133,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fefae0'
     },
     text: {
-      color: '#fefae0',
-      fontSize: 15
+        color: '#fefae0',
+        fontSize: 15
 
-   }
+    }
 });
-
-export default registrations

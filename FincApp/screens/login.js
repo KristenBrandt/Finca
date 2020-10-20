@@ -2,16 +2,16 @@ import React,{useState} from 'react';
 import {Alert,Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput} from 'react-native';
 import {StatusBar} from "expo-status-bar";
 import logo from "../assets/logo.png";
-import back from "../assets/back.png";
-import {existingUsers} from "../users"
+import backimg from "../assets/back.png";
 import { firebase } from '../Firebase';
 
-
-const login =({navigation})=> {
+export default function login({navigation}){
     const [Usuario, setUsuario] = useState('');
     const [Contrasena, setContrasena] = useState('');
 
-    function ingresar(Usuario,Contrasena) {
+    const back = () => {navigation.navigate('home')}
+
+    const onLoginPress = () => {
         firebase
             .auth()
             .signInWithEmailAndPassword(Usuario, Contrasena)
@@ -23,7 +23,7 @@ const login =({navigation})=> {
                     .get()
                     .then(firestoreDocument => {
                         if (!firestoreDocument.exists) {
-                            alert("El usuario con ese email ya no existe.")
+                            alert("Usaurio ya no existe.")
                             return;
                         }
                         const user = firestoreDocument.data()
@@ -37,21 +37,12 @@ const login =({navigation})=> {
                 alert(error)
             })
     }
-        /*
-        if (existingUsers.find(users => users.User === Usuario) && existingUsers.find(users => users.Contrasena1 === Contrasena )) {
-            navigation.navigate('menu');
-
-        }else{
-           alert("Error: No se encontro un usuario con esas especificaciones", "No se encontro un usuario con esas especificaciones");
-        }}
-
-         */
 
     return(
         <View style={styles.container} >
             <StatusBar style="auto" />
-            <TouchableOpacity onPress={()=>navigation.navigate('home')}>
-                <Image source ={back} style ={{width:50, height:50,paddingHorizontal:5}}/>
+            <TouchableOpacity onPress={()=>back()}>
+                <Image source ={backimg} style ={{width:50, height:50,paddingHorizontal:5}}/>
             </TouchableOpacity>
             <Image source={logo} style={{marginBottom: 40, width: 440, height: 399 }} />
             <TouchableOpacity >
@@ -69,21 +60,22 @@ const login =({navigation})=> {
                            onChangeText = {(password)=>setContrasena(password)}
                 />
             </TouchableOpacity>
-            < TouchableOpacity style={styles.button} onPress={() => ingresar(Usuario,Contrasena)}>
+            < TouchableOpacity style={styles.button} onPress={() =>onLoginPress()}>
                 <Text style={{ fontSize: 30,color:'#fefae0'}}>Ingresar</Text>
             </TouchableOpacity>
 
         </View>
+
+
     )
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#283618',
-      justifyContent: 'center',
-      alignItems: 'center'
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#283618',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     button:{
         color: '#fefae0',
         backgroundColor: "#606C38",
@@ -110,5 +102,3 @@ const styles = StyleSheet.create({
         backgroundColor: '#fefae0'
     }
 });
-
-export default login

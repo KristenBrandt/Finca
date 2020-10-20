@@ -1,11 +1,12 @@
 import React,{useState} from 'react';
-import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput, ScrollView} from 'react-native';
+import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput, ScrollView,FlatList} from 'react-native';
 import {StatusBar} from "expo-status-bar";
-import logo from "../assets/logo.png";
 import back from "../assets/back.png";
+import { firebase } from '../Firebase';
 
 
-const ventas =({navigation})=> {
+
+const ventas =({navigation,props})=> {
     //primeros datos
     const [Fecha, setFecha] = useState('')
     const [Envio,setEnvio] = useState('');
@@ -17,6 +18,62 @@ const ventas =({navigation})=> {
     const [Total, setTotal] = useState('')
     const [Tonelada, setToneladas] = useState('')
     //terceros datos
+
+    const [entities, setEntities] = useState([])
+
+    const entityRef = firebase.firestore().collection('entities')
+    const userID = props.extraData.id
+
+    useEffect(() => {
+        entityRef
+            .where("authorID", "==", userID)
+            .orderBy('createdAt', 'desc')
+            .onSnapshot(
+                querySnapshot => {
+                    const newEntities = []
+                    querySnapshot.forEach(doc => {
+                        const entity = doc.data()
+                        entity.id = doc.id
+                        newEntities.push(entity)
+                    });
+                    setEntities(newEntities)
+                },
+                error => {
+                    console.log(error)
+                }
+            )
+    }, [])
+
+    const onAddButtonPress = () => {
+        if (Envio && Envio.length > 0) {
+            const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+            const data = {
+                text: Fecha + Envio + Racimos +Pepas +Penalizacion+ Total +Tonelada,
+                authorID: userID,
+                createdAt: timestamp,
+            };
+            entityRef
+                .add(data)
+                .then(_doc => {
+                    setEntityText('')
+                    Keyboard.dismiss()
+                })
+                .catch((error) => {
+                    alert(error)
+                });
+        }
+    }
+
+    const renderEntity = ({item, index}) => {
+        return (
+            <View style={styles.entityContainer}>
+                <Text style={styles.entityText}>
+                    {index}. {item.text}
+                </Text>
+            </View>
+        )
+    }
+
 
     return (
         <ScrollView>
@@ -120,9 +177,19 @@ const ventas =({navigation})=> {
                            onChangeText = {(total)=>setTotal(total)}
                 />
             </TouchableOpacity>
-            < TouchableOpacity style={styles.button}>
+            < TouchableOpacity style={styles.button} onPress ={() => onAddButtonPress()}>
                 <Text  style={{ fontSize: 22,color:'#fefae0'}} >Agregar Venta</Text>
             </TouchableOpacity>
+            { entities && (
+                <View style={styles.listContainer}>
+                    <FlatList
+                        data={entities}
+                        renderItem={renderEntity}
+                        keyExtractor={(item) => item.id}
+                        removeClippedSubviews={true}
+                    />
+                </View>
+            )}
         </View>
         </ScrollView>
     )
@@ -157,6 +224,33 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         fontSize: 20,
         backgroundColor: '#fefae0'
+    },
+    formContainer: {
+        flexDirection: 'row',
+        height: 80,
+        marginTop: 40,
+        marginBottom: 20,
+        flex: 1,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    listContainer: {
+        marginTop: 20,
+        padding: 20,
+    },
+    entityContainer: {
+        marginTop: 16,
+        borderBottomColor: '#cccccc',
+        borderBottomWidth: 1,
+        paddingBottom: 16
+    },
+    entityText: {
+        fontSize: 20,
+        color: '#333333'
     }
 })
 

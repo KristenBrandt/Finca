@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View, TouchableOpacity, Image} from 'react-native';
 import back from "../assets/back.png";
+import { firebase } from '../Firebase';
 
 
 const cc =({navigation})=> {
@@ -19,6 +20,7 @@ const cc =({navigation})=> {
                 <TextInput style = {styles.input}
                            placeholder="Gasto"
                            placeholderTextColor="#283618"
+                           value = {Gasto}
                            onChange = {(gas)=>setGasto(gas)}
                 />
             </TouchableOpacity>
@@ -26,6 +28,7 @@ const cc =({navigation})=> {
                 <TextInput style = {styles.input}
                            placeholder="Nombre de Objeto"
                            placeholderTextColor="#283618"
+                           value = {Nombre}
                            onChange = {(obj)=>setNombre(obj)}
                 />
             </TouchableOpacity>
@@ -33,6 +36,7 @@ const cc =({navigation})=> {
                 <TextInput style = {styles.input}
                            placeholder="Descripcion"
                            placeholderTextColor="#283618"
+                           value = {Descripcion}
                            onChange = {(desc)=>setDescripcion(desc)}
                 />
             </TouchableOpacity>
@@ -40,6 +44,7 @@ const cc =({navigation})=> {
                 <TextInput style = {styles.input}
                            placeholder="Centro de Costo"
                            placeholderTextColor="#283618"
+                           value = {CentrodeCosto}
                            onChange = {(centro)=>setCentroCosto(centro)}
                 />
             </TouchableOpacity>
