@@ -10,6 +10,7 @@ import menu from "./screens/menu";
 import cc from "./screens/cc";
 import personal from "./screens/personal";
 import ventas from "./screens/ventas";
+import reportes_ventas from "./screens/reportes_ventas";
 import { firebase } from './Firebase';
 import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
@@ -22,8 +23,8 @@ export default function App() {
     const [loading, setLoading] = useState(true)
     const [user, setUser] = useState(null)
 
-    /*
 
+/*
 // Esto es para hacer que el user no se tenga que log in cada vez que abre la applicacion
     if (loading) {
         return (
@@ -51,15 +52,14 @@ export default function App() {
             }
         });
     }, []);
-    
-     */
+
+*/
 
     return (
         <NavigationContainer>
-            <Stack.Navigator headerMode={'none'}
-            >
+            <Stack.Navigator headerMode={'none'}>
                 { user ? (
-                    <Stack.Screen name="menu" >
+                    <Stack.Screen name="menu"  >
                         {props => <menu {...props} extraData={user}  />}
                     </Stack.Screen>
 
@@ -72,9 +72,12 @@ export default function App() {
                         <Stack.Screen name ="personal" component={personal}/>
                         <Stack.Screen name ="cc" component={cc}/>
                         <Stack.Screen name ="ventas" component={ventas}/>
+                        <Stack.Screen name ="reportes_ventas" component={reportes_ventas}/>
                     </>
                 )}
             </Stack.Navigator>
         </NavigationContainer>
     );
 }
+
+/* <Stack.Screen name="menu" component={menu}/> */

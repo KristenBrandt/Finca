@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FincApp",
-    "slug": "FincApp",
+    "name": "FincaApp",
+    "slug": "fincaapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,6 +21,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "App para el registro de ventas en finca productora de palma.",
+    "githubUrl": "https://github.com/KristenBrandt/Finca.git"
   }
 }

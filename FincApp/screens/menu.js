@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {StatusBar} from "expo-status-bar";
 import personal from "../assets/personal.png"
 import cc from "../assets/cc.png"
@@ -8,10 +8,7 @@ import { firebase } from '../Firebase';
 
 
 
-export default function menu({navigation}){
-
-    const back = () => {navigation.navigate('home')}
-
+export default function menu({navigation,props}){
 
     const Signafuera = () => (
         firebase
