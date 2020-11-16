@@ -13,6 +13,7 @@ import ventas from "./screens/ventas";
 import reportes_ventas from "./screens/reportes_ventas";
 import { firebase } from './Firebase';
 import {decode, encode} from 'base-64'
+import CC from "./screens/cc";
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
 

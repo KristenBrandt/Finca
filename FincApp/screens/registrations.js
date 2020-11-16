@@ -54,6 +54,7 @@ export default function registrations({navigation}){
                         <Image source={backimg} style={{width: 50, height: 50, paddingHorizontal: 5, marginBottom: 100}}/>
                     </TouchableOpacity>
                     <TouchableOpacity>
+                        <Text style= {styles.text} > Nombre* </Text>
                         <TextInput style={styles.input}
                                    placeholder={'Nombre*'}
                                    placeholderTextColor="#283618"
@@ -62,6 +63,7 @@ export default function registrations({navigation}){
                         />
                     </TouchableOpacity>
                     <TouchableOpacity>
+                        <Text style= {styles.text} > Correo Electrónico* </Text>
                         <TextInput style={styles.input}
                                    placeholder={'Correo Electrónico*'}
                                    placeholderTextColor="#283618"
@@ -70,6 +72,7 @@ export default function registrations({navigation}){
                         />
                     </TouchableOpacity>
                     <TouchableOpacity>
+                        <Text style= {styles.text} > Contraseña* </Text>
                         <TextInput style={styles.input}
                                    placeholder={'Contraseña*'}
                                    placeholderTextColor="#283618"
@@ -80,6 +83,7 @@ export default function registrations({navigation}){
                         />
                     </TouchableOpacity>
                     <TouchableOpacity>
+                        <Text style= {styles.text} > Confirmar Contraseña* </Text>
                         <TextInput style={styles.input}
                                    placeholder={'Confirmar Contraseña*'}
                                    placeholderTextColor="#283618"

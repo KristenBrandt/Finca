@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, TextInput, View, TouchableOpacity, Image, Keyboard} from 'react-native';
+import React,{useState, useEffect} from 'react';
+import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput, ScrollView,FlatList, Keyboard} from 'react-native';
+import {StatusBar} from "expo-status-bar";
 import back from "../assets/back.png";
 import { firebase } from '../Firebase';
-import {ScrollView} from "react-native-web";
 
 
 export default function cc({navigation}) {
@@ -71,12 +71,13 @@ export default function cc({navigation}) {
     }
 
     return (
-        <ScrollView>
             <View style={styles.container} >
-                <TouchableOpacity onPress={()=>navigation.navigate('menu')}>
-                    <Image source ={back} style ={{width:50, height:50,paddingHorizontal:5,marginBottom:50}}/>
+                <StatusBar style="auto" />
+                <TouchableOpacity onPress={() => navigation.navigate('menu')}>
+                    <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 25, marginTop:20}}/>
                 </TouchableOpacity>
                 <TouchableOpacity>
+                    <Text style= {styles.text} > Gasto en Quetzales </Text>
                     <TextInput style = {styles.input}
                                placeholder="Gasto"
                                placeholderTextColor="#283618"
@@ -85,6 +86,7 @@ export default function cc({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
+                    <Text style= {styles.text} > Nombre </Text>
                     <TextInput style = {styles.input}
                                placeholder="Nombre de Objeto"
                                placeholderTextColor="#283618"
@@ -92,13 +94,15 @@ export default function cc({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
+                    <Text style= {styles.text} > Descripción </Text>
                     <TextInput style = {styles.input}
-                               placeholder="Descripcion"
+                               placeholder="Descripción"
                                placeholderTextColor="#283618"
                                onChangeText = {(desc)=>setDescripcion(desc)}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
+                    <Text style= {styles.text} > Centro de Costo </Text>
                     <TextInput style = {styles.input}
                                placeholder="Centro de Costo"
                                placeholderTextColor="#283618"
@@ -108,9 +112,8 @@ export default function cc({navigation}) {
                 < TouchableOpacity style={styles.button} onPress ={() => onAddButtonPress2()}>
                     <Text  style={{ fontSize: 22,color:'#fefae0'}} >Ingresar datos</Text>
                 </TouchableOpacity>
-
             </View>
-        </ScrollView>
+
     )
 }
 const styles = StyleSheet.create({
@@ -142,13 +145,14 @@ const styles = StyleSheet.create({
         height: 50,
         width: 280,
         borderColor: 'black',
-        fontSize: 20,
+        fontSize: 15,
         backgroundColor: '#fefae0'
     },
     text: {
         color: '#fefae0',
         fontSize: 15
 
-    }
+    },
+
 });
 

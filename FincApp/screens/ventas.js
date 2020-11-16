@@ -109,6 +109,7 @@ export default function ventas({navigation}) {
                 </TouchableOpacity>
                 <Text style = {{color:'#bc6c25',fontSize: 25}}>Fruta enviada de la finca</Text>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Fecha </Text>
                     <TextInput style={styles.input}
                                placeholder={'Fecha'}
                                placeholderTextColor="#283618"
@@ -117,6 +118,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Envio </Text>
                     <TextInput style={styles.input}
                                placeholder={'Número de Envio'}
                                placeholderTextColor="#283618"
@@ -126,6 +128,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Racimos </Text>
                     <TextInput style={styles.input}
                                placeholder={'Número de Racimos'}
                                placeholderTextColor="#283618"
@@ -134,6 +137,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Pepas </Text>
                     <TextInput style={styles.input}
                                placeholder={'Número de Pepas'}
                                placeholderTextColor="#283618"
@@ -144,6 +148,7 @@ export default function ventas({navigation}) {
                 <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Datos del recibo </Text>
                 <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Fruta Extractora Palmas del Ixcan</Text>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Racimos </Text>
                     <TextInput style={styles.input}
                                placeholder={'Número de Racimos'}
                                placeholderTextColor="#283618"
@@ -152,6 +157,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Pepas </Text>
                     <TextInput style={styles.input}
                                placeholder={'Número de Pepas'}
                                placeholderTextColor="#283618"
@@ -160,6 +166,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Peso KG </Text>
                     <TextInput style={styles.input}
                                placeholder={'Peso KG'}
                                placeholderTextColor="#283618"
@@ -168,6 +175,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Peso B </Text>
                     <TextInput style={styles.input}
                                placeholder={'Peso B'}
                                placeholderTextColor="#283618"
@@ -176,6 +184,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Peso T </Text>
                     <TextInput style={styles.input}
                                placeholder={'Peso T'}
                                placeholderTextColor="#283618"
@@ -184,6 +193,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Peso N </Text>
                     <TextInput style={styles.input}
                                placeholder={'Peso N'}
                                placeholderTextColor="#283618"
@@ -192,6 +202,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Toneladas </Text>
                     <TextInput style={styles.input}
                                placeholder={'Toneladas'}
                                placeholderTextColor="#283618"
@@ -201,6 +212,7 @@ export default function ventas({navigation}) {
                 </TouchableOpacity>
                 <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Penalización</Text>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Pasados </Text>
                     <TextInput style={styles.input}
                                placeholder={'Pasados'}
                                placeholderTextColor="#283618"
@@ -209,6 +221,7 @@ export default function ventas({navigation}) {
                     />
                 </TouchableOpacity>
                 <TouchableOpacity >
+                    <Text style= {styles.text} > Sob/Maduro </Text>
                     <TextInput style={styles.input}
                                placeholder={'Sob/Maduro'}
                                placeholderTextColor="#283618"
@@ -228,7 +241,7 @@ export default function ventas({navigation}) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 3,
         backgroundColor: '#283618',
         justifyContent: 'center',
         alignItems: 'center'
@@ -254,7 +267,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 280,
         borderColor: 'black',
-        fontSize: 20,
+        fontSize: 15,
         backgroundColor: '#fefae0'
     },
     formContainer: {
@@ -283,6 +296,10 @@ const styles = StyleSheet.create({
     entityText: {
         fontSize: 20,
         color: '#333333'
+    },
+    text:{
+        color: '#fefae0',
+        fontSize: 15
     }
 })
 
