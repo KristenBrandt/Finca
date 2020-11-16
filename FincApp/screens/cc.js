@@ -5,13 +5,15 @@ import { firebase } from '../Firebase';
 import {ScrollView} from "react-native-web";
 
 
-export default function ventas({navigation}) {
-    const entityRef = firebase.firestore().collection('ventas')
+export default function cc({navigation}) {
+    const entityRef = firebase.firestore().collection('gastos')
 
     const [Gasto, setGasto] = useState('');
     const [Nombre,setNombre]= useState('');
     const [Descripcion,setDescripcion]= useState('');
     const [CentrodeCosto,setCentroCosto] =useState('');
+
+    const [entities, setEntities] = useState([])
 
     useEffect(() => {
         entityRef
@@ -33,7 +35,7 @@ export default function ventas({navigation}) {
     }, [])
 
     const onAddButtonPress2 = () => {
-        if ((Gasto && Gasto.length) > 0 && (Nombre && Nombre.lenght) >0) {
+        if ((Gasto && Gasto.length) > 0 && (Nombre && Nombre.length) >0) {
             const timestamp = firebase.firestore.FieldValue.serverTimestamp();
             const data = {
                 Gasto_Quetzales: Gasto,
@@ -78,32 +80,29 @@ export default function ventas({navigation}) {
                     <TextInput style = {styles.input}
                                placeholder="Gasto"
                                placeholderTextColor="#283618"
-                               value = {Gasto}
-                               onChange = {(gas)=>setGasto(gas)}
+                               onChangeText = {(gas)=>setGasto(gas)}
+
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <TextInput style = {styles.input}
                                placeholder="Nombre de Objeto"
                                placeholderTextColor="#283618"
-                               value = {Nombre}
-                               onChange = {(obj)=>setNombre(obj)}
+                               onChangeText = {(obj)=>setNombre(obj)}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <TextInput style = {styles.input}
                                placeholder="Descripcion"
                                placeholderTextColor="#283618"
-                               value = {Descripcion}
-                               onChange = {(desc)=>setDescripcion(desc)}
+                               onChangeText = {(desc)=>setDescripcion(desc)}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <TextInput style = {styles.input}
                                placeholder="Centro de Costo"
                                placeholderTextColor="#283618"
-                               value = {CentrodeCosto}
-                               onChange = {(centro)=>setCentroCosto(centro)}
+                               onChangeText = {(centro)=>setCentroCosto(centro)}
                     />
                 </TouchableOpacity>
                 < TouchableOpacity style={styles.button} onPress ={() => onAddButtonPress2()}>
@@ -153,4 +152,3 @@ const styles = StyleSheet.create({
     }
 });
 
-export default cc
