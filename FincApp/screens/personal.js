@@ -100,7 +100,7 @@ export default function personal({navigation}) {
                     <TextInput style = {styles.input}
                                placeholder="DPI"
                                placeholderTextColor="#283618"
-                               onChangeText = {(dp)=>setDPI(dp}
+                               onChangeText = {(dp)=>setDPI(dp)}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -108,7 +108,7 @@ export default function personal({navigation}) {
                     <TextInput style = {styles.input}
                                placeholder="Número de celular"
                                placeholderTextColor="#283618"
-                               onChangeText = {(cel=>setCelular(cel)}
+                               onChangeText = {(cel)=>setCelular(cel)}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -116,7 +116,7 @@ export default function personal({navigation}) {
                     <TextInput style = {styles.input}
                                placeholder="Número de emergencia"
                                placeholderTextColor="#283618"
-                               onChangeText = {(emer=>setEmergencia(emer)}
+                               onChangeText = {(emer)=>setEmergencia(emer)}
                     />
                 </TouchableOpacity>
                 < TouchableOpacity style={styles.button} onPress ={() => onAddButtonPress3()}>
