@@ -48,7 +48,6 @@ export default function registrations({navigation}){
     }
             return (
                 <View style={styles.container}>
-                    <KeyboardAwareScrollView>
                     <StatusBar style="auto"/>
                     <TouchableOpacity onPress={() => back()}>
                         <Image source={backimg} style={{width: 50, height: 50, paddingHorizontal: 5, marginBottom: 100}}/>
@@ -98,7 +97,6 @@ export default function registrations({navigation}){
                                        onPress={() =>onRegisterPress()}>
                         <Text style={{fontSize: 30, color: '#fefae0'}}>Registrar</Text>
                     </TouchableOpacity>
-                    </KeyboardAwareScrollView>
                 </View>
 
             )
