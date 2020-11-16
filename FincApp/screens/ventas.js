@@ -1,32 +1,42 @@
-import React,{useState} from 'react';
-import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput, ScrollView,FlatList} from 'react-native';
+import React,{useState, useEffect} from 'react';
+import {Image, StyleSheet, Text,Button, TouchableOpacity, View, TextInput, ScrollView,FlatList, Keyboard} from 'react-native';
 import {StatusBar} from "expo-status-bar";
 import back from "../assets/back.png";
 import { firebase } from '../Firebase';
 
 
 
-const ventas =({navigation,props})=> {
-    //primeros datos
-    const [Fecha, setFecha] = useState('')
+export default function ventas({navigation}) {
+
+    const entityRef = firebase.firestore().collection('ventas')
+
+//primeros datos
+    const [Fecha, setFecha] = useState('');
     const [Envio,setEnvio] = useState('');
     const [Racimos, setRacimos] = useState('');
     const [Pepas, setPepas] = useState('');
     //segundos datos
-
-    const [Penalizacion, setPenalizacion] = useState('');
-    const [Total, setTotal] = useState('')
+    const [Racimos_Res, setRacimos2 ] = useState('');
+    const [Pepas_Res, setPepas2] = useState('');
+    const [PesoKG, setPesoKG] = useState("");
+    const [PesoB, setPesoB] = useState("");
+    const [Pesot, setPesoT] = useState('');
+    const [PesoN, setPesoN]= useState('');
     const [Tonelada, setToneladas] = useState('')
+
+
+// terceros datos
+    const [Pasados, setPasados] =useState('')
+    const [Sob, setSob] = useState('')
+
+
     //terceros datos
 
     const [entities, setEntities] = useState([])
 
-    const entityRef = firebase.firestore().collection('entities')
-    const userID = props.extraData.id
 
     useEffect(() => {
         entityRef
-            .where("authorID", "==", userID)
             .orderBy('createdAt', 'desc')
             .onSnapshot(
                 querySnapshot => {
@@ -48,19 +58,35 @@ const ventas =({navigation,props})=> {
         if (Envio && Envio.length > 0) {
             const timestamp = firebase.firestore.FieldValue.serverTimestamp();
             const data = {
-                text: Fecha + Envio + Racimos +Pepas +Penalizacion+ Total +Tonelada,
-                authorID: userID,
-                createdAt: timestamp,
+                Fecha_Enviada: Fecha,
+                Numero_Envio: Envio ,
+                Racimos_Enviados: Racimos ,
+                Pepas_Enviadas:Pepas ,
+                Racimos_Recibidos: Racimos_Res,
+                Pepas_Recibidas: Pepas_Res,
+                PesoKG: PesoKG,
+                PesoB: PesoB,
+                PesoT: Pesot,
+                PesoN: PesoN,
+                Toneladas: Tonelada,
+                Pasados: Pasados,
+                Sob_Maduro:Sob ,
+                creadoEn: timestamp,
             };
+            //revisar ese alert @Todo
             entityRef
                 .add(data)
                 .then(_doc => {
-                    setEntityText('')
+                    data
                     Keyboard.dismiss()
+                    alert("Venta Agregada")
+
                 })
                 .catch((error) => {
                     alert(error)
                 });
+
+
         }
     }
 
@@ -74,129 +100,148 @@ const ventas =({navigation,props})=> {
         )
     }
 
-
-    return (
+    return(
         <ScrollView>
-        <View style={styles.container} >
-            <StatusBar style="auto" />
-            <TouchableOpacity onPress={() => navigation.navigate('menu')}>
-                <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 25, marginTop:20}}/>
-            </TouchableOpacity>
-            <Text style = {{color:'#bc6c25',fontSize: 25}}>Fruta enviada de la finca</Text>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Fecha'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(fecha)=>setFecha(fecha)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Número de Envio'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(envio)=>setEnvio(envio)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Número de Racimos'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(racimos)=>setRacimos(racimos)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Número de Pepas'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(pepa)=>setPepas(pepa)}
-                />
-            </TouchableOpacity>
-            <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Datos del recibo </Text>
-            <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Fruta Extractora Palmas del Ixcan</Text>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Número de Racimos'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(racimos)=>setRacimos(racimos)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Número de Pepas'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(pepa)=>setPepas(pepa)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Peso KG'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(pepa)=>setPepas(pepa)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Peso B'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(pepa)=>setPepas(pepa)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Peso T'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(pepa)=>setPepas(pepa)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Peso N'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(pepa)=>setPepas(pepa)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Toneladas'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(toneladas)=>setToneladas(toneladas)}
-                />
-            </TouchableOpacity>
-            <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Penalización</Text>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Pasados'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(pasados)=>setPasados(pasados)}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity >
-                <TextInput style={styles.input}
-                           placeholder={'Sob/Maduro'}
-                           placeholderTextColor="#283618"
-                           onChangeText = {(total)=>setTotal(total)}
-                />
-            </TouchableOpacity>
-            < TouchableOpacity style={styles.button} onPress ={() => onAddButtonPress()}>
-                <Text  style={{ fontSize: 22,color:'#fefae0'}} >Agregar Venta</Text>
-            </TouchableOpacity>
-            { entities && (
-                <View style={styles.listContainer}>
-                    <FlatList
-                        data={entities}
-                        renderItem={renderEntity}
-                        keyExtractor={(item) => item.id}
-                        removeClippedSubviews={true}
+            <View style={styles.container} >
+                <StatusBar style="auto" />
+                <TouchableOpacity onPress={() => navigation.navigate('menu')}>
+                    <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 25, marginTop:20}}/>
+                </TouchableOpacity>
+                <Text style = {{color:'#bc6c25',fontSize: 25}}>Fruta enviada de la finca</Text>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Fecha </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Fecha'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(fecha)=>setFecha(fecha)}
+
                     />
-                </View>
-            )}
-        </View>
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Envio </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Número de Envio'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(envio)=>setEnvio(envio)}
+
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Racimos </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Número de Racimos'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(racimos)=>setRacimos(racimos)}
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Pepas </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Número de Pepas'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(pepa)=>setPepas(pepa)}
+
+                    />
+                </TouchableOpacity>
+                <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Datos del recibo </Text>
+                <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Fruta Extractora Palmas del Ixcan</Text>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Racimos </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Número de Racimos'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(racimos_1)=>setRacimos2(racimos_1)}
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Número de Pepas </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Número de Pepas'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(pepa2)=>setPepas2(pepa2)}
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Peso KG </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Peso KG'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(peso1)=>setPesoKG(peso1)}
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Peso B </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Peso B'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(peso2)=>setPesoB(peso2)}
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Peso T </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Peso T'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(peso3)=>setPesoT(peso3)}
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Peso N </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Peso N'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(peso4)=>setPesoN(peso4)}
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Toneladas </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Toneladas'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(toneladas)=>setToneladas(toneladas)}
+
+                    />
+                </TouchableOpacity>
+                <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Penalización</Text>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Pasados </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Pasados'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(pasados)=>setPasados(pasados)}
+
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style= {styles.text} > Sob/Maduro </Text>
+                    <TextInput style={styles.input}
+                               placeholder={'Sob/Maduro'}
+                               placeholderTextColor="#283618"
+                               onChangeText = {(sob)=>setSob(sob)}
+
+                    />
+                </TouchableOpacity>
+                < TouchableOpacity style={styles.button} onPress ={() => onAddButtonPress()}>
+                    <Text  style={{ fontSize: 22,color:'#fefae0'}} >Agregar Venta</Text>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
+
+
     )
 }
+
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 3,
         backgroundColor: '#283618',
         justifyContent: 'center',
         alignItems: 'center'
@@ -222,7 +267,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 280,
         borderColor: 'black',
-        fontSize: 20,
+        fontSize: 15,
         backgroundColor: '#fefae0'
     },
     formContainer: {
@@ -251,7 +296,10 @@ const styles = StyleSheet.create({
     entityText: {
         fontSize: 20,
         color: '#333333'
+    },
+    text:{
+        color: '#fefae0',
+        fontSize: 15
     }
 })
 
-export default ventas
