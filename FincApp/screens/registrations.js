@@ -50,7 +50,7 @@ export default function registrations({navigation}){
                 <View style={styles.container}>
                     <StatusBar style="auto"/>
                     <TouchableOpacity onPress={() => back()}>
-                        <Image source={backimg} style={{width: 50, height: 50, paddingHorizontal: 5, marginBottom: 100}}/>
+                        <Image source={backimg} style={{width: 50, height: 50, paddingHorizontal: 5, marginBottom: 25}}/>
                     </TouchableOpacity>
                     <TouchableOpacity>
                         <Text style= {styles.text} > Nombre* </Text>
