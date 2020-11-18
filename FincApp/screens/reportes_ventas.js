@@ -8,38 +8,46 @@ import personal from "../assets/personal.png";
 import ventas from "../assets/ventas.png";
 import backimg from "../assets/back.png";
 import TextStylePropTypes from "react-native-web/dist/exports/Text/TextStylePropTypes";
+import { firebase } from '../Firebase';
 
 
 
 export default function reportes_ventas({navigation}) {
 
-    /*
-    // get the whole collection
-db.collection("cities")
-.get()
-.then(querySnapshot => {
-  const data = querySnapshot.docs.map(doc => doc.data());
-  console.log(data); // array of cities objects
-});
+    const entityRef = firebase.firestore().collection('ventas')
 
-// or get the single doc from the collection
-db.collection("cities")
-.doc('LA')
-.get()
-.then(doc => {
-  const data = doc.data();
-  console.log(data); // LA city object with key-value pair
-});
+    function get_all_ventas(){
+    entityRef
+        .collection("ventas")
+        .get()
+        .then(querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data());
+            console.log(data); // array of ventas objects
+        })
+    };
 
-// or get all docs matching the query
-db.collection("cities")
-.where("country", "==", "USA")
-.get()
-.then(querySnapshot => {
-  const data = querySnapshot.docs.map(doc => doc.data());
-  console.log(data); // array of cities objects
-});
-     */
+    function una_fecha(fecha){
+        entityRef
+            .collection("ventas")
+            .doc(fecha)
+            .get()
+            .then(doc => {
+                const data = doc.data();
+                console.log(data); // ventas object with key-value pair
+            })
+    }
+    function una_especifica(){
+        entityRef
+            .collection("ventas")
+            .where("Fecha_enviada", "==", "Hoy")
+            .get()
+            .then(querySnapshot => {
+                const data = querySnapshot.docs.map(doc => doc.data());
+                console.log(data); // array of ventas objects
+            });
+    }
+
+
     //TODO
     const back = () => {navigation.navigate('menu')}
     return(
@@ -50,31 +58,7 @@ db.collection("cities")
                 <Image source={backimg} style={{width: 50, height: 50, paddingHorizontal: 5, marginBottom: 100}}/>
             </TouchableOpacity>
             <Text Reportes/>
-            // get the whole collection
-            db.collection("cities")
-            .get()
-            .then(querySnapshot => {
-            const data = querySnapshot.docs.map(doc => doc.data());
-            console.log(data); // array of cities objects
-        });
 
-            // or get the single doc from the collection
-            db.collection("cities")
-            .doc('LA')
-            .get()
-            .then(doc => {
-            const data = doc.data();
-            console.log(data); // LA city object with key-value pair
-        });
-
-            // or get all docs matching the query
-            db.collection("cities")
-            .where("country", "==", "USA")
-            .get()
-            .then(querySnapshot => {
-            const data = querySnapshot.docs.map(doc => doc.data());
-            console.log(data); // array of cities objects
-        });
 
 
         </View>
