@@ -1,0 +1,9 @@
+
+
+################################## TESTING ############################
+
+SYSTEM TESTING: Excel con las funcionalidades
+
+GUI TESTING: iMacros (https://chrome.google.com/webstore/detail/imacros-for-chrome/cplklnmnlbnpmjogncfgfijoopmnlemp)
+
+STRESS TESTING: WebLoad (https://www.radview.com/)
