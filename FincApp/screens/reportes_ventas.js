@@ -12,6 +12,34 @@ import TextStylePropTypes from "react-native-web/dist/exports/Text/TextStyleProp
 
 
 export default function reportes_ventas({navigation}) {
+
+    /*
+    // get the whole collection
+db.collection("cities")
+.get()
+.then(querySnapshot => {
+  const data = querySnapshot.docs.map(doc => doc.data());
+  console.log(data); // array of cities objects
+});
+
+// or get the single doc from the collection
+db.collection("cities")
+.doc('LA')
+.get()
+.then(doc => {
+  const data = doc.data();
+  console.log(data); // LA city object with key-value pair
+});
+
+// or get all docs matching the query
+db.collection("cities")
+.where("country", "==", "USA")
+.get()
+.then(querySnapshot => {
+  const data = querySnapshot.docs.map(doc => doc.data());
+  console.log(data); // array of cities objects
+});
+     */
     //TODO
     const back = () => {navigation.navigate('menu')}
     return(
@@ -21,8 +49,32 @@ export default function reportes_ventas({navigation}) {
             <TouchableOpacity onPress={() => back()}>
                 <Image source={backimg} style={{width: 50, height: 50, paddingHorizontal: 5, marginBottom: 100}}/>
             </TouchableOpacity>
-
             <Text Reportes/>
+            // get the whole collection
+            db.collection("cities")
+            .get()
+            .then(querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data());
+            console.log(data); // array of cities objects
+        });
+
+            // or get the single doc from the collection
+            db.collection("cities")
+            .doc('LA')
+            .get()
+            .then(doc => {
+            const data = doc.data();
+            console.log(data); // LA city object with key-value pair
+        });
+
+            // or get all docs matching the query
+            db.collection("cities")
+            .where("country", "==", "USA")
+            .get()
+            .then(querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data());
+            console.log(data); // array of cities objects
+        });
 
 
         </View>
