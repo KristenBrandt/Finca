@@ -10,23 +10,23 @@ import {Bar} from 'react-chartjs-2';
 
 
 
-export default function reportes_ventas({navigation}) {
+export default function reportes_personal({navigation}) {
 
-    const entityRef = firebase.firestore().collection('ventas')
+    const entityRef = firebase.firestore().collection('personal')
 
     function get_all_ventas(){
-    entityRef
-        .collection("ventas")
-        .get()
-        .then(querySnapshot => {
-            const data = querySnapshot.docs.map(doc => doc.data());
-            console.log(data); // array of ventas objects
-        })
+        entityRef
+            .collection("personal")
+            .get()
+            .then(querySnapshot => {
+                const data = querySnapshot.docs.map(doc => doc.data());
+                console.log(data); // array of ventas objects
+            })
     };
 
     function una_fecha(fecha){
         entityRef
-            .collection("ventas")
+            .collection("personal")
             .doc(fecha)
             .get()
             .then(doc => {
@@ -36,7 +36,7 @@ export default function reportes_ventas({navigation}) {
     }
     function una_especifica(){
         entityRef
-            .collection("ventas")
+            .collection("personal")
             .where("Fecha_enviada", "==", "Hoy")
             .get()
             .then(querySnapshot => {
@@ -47,7 +47,7 @@ export default function reportes_ventas({navigation}) {
 
 
     //TODO
-    const back = () => {navigation.navigate('menu_ventas')}
+    const back = () => {navigation.navigate('menu_personal')}
     return(
         <View style={styles.container}>
 

@@ -75,7 +75,7 @@ export default function personal({navigation}) {
     return (
             <View style={styles.container} >
                 <StatusBar style="auto" />
-                <TouchableOpacity onPress={() => navigation.navigate('menu')}>
+                <TouchableOpacity onPress={() => navigation.navigate('menu_personal')}>
                     <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 25, marginTop:20}}/>
                 </TouchableOpacity>
                 <TouchableOpacity>

@@ -104,10 +104,10 @@ export default function ventas({navigation}) {
         <ScrollView>
             <View style={styles.container} >
                 <StatusBar style="auto" />
-                <TouchableOpacity onPress={() => navigation.navigate('menu')}>
+                <TouchableOpacity onPress={() => navigation.navigate('menu_ventas')}>
                     <Image source={back} style={{width: 50, height: 50, paddingHorizontal: 5,marginBottom: 25, marginTop:20}}/>
                 </TouchableOpacity>
-                <Text style = {{color:'#bc6c25',fontSize: 25}}>Fruta enviada de la finca</Text>
+                <Text style = {{color:'#bc6c25',fontSize: 20}}>Fruta enviada de la finca</Text>
                 <TouchableOpacity >
                     <Text style= {styles.text} > Fecha </Text>
                     <TextInput style={styles.input}
@@ -145,8 +145,8 @@ export default function ventas({navigation}) {
 
                     />
                 </TouchableOpacity>
-                <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Datos del recibo </Text>
-                <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Fruta Extractora Palmas del Ixcan</Text>
+                <Text style = {{color:'#bc6c25',fontSize: 20,alignSelf:'center'}}>Datos del recibo </Text>
+                <Text style = {{color:'#bc6c25',fontSize: 20,alignSelf:'center'}}>Fruta Extractora Palmas del Ixcán</Text>
                 <TouchableOpacity >
                     <Text style= {styles.text} > Número de Racimos </Text>
                     <TextInput style={styles.input}
@@ -210,7 +210,7 @@ export default function ventas({navigation}) {
 
                     />
                 </TouchableOpacity>
-                <Text style = {{color:'#bc6c25',fontSize: 25,alignSelf:'center'}}>Penalización</Text>
+                <Text style = {{color:'#bc6c25',fontSize: 20,alignSelf:'center'}}>Penalización</Text>
                 <TouchableOpacity >
                     <Text style= {styles.text} > Pasados </Text>
                     <TextInput style={styles.input}
