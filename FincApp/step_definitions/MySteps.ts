@@ -25,3 +25,21 @@ When(/^el gerente ingresa su correo a la applicacion$/, function () {
 Then(/^la applicacion ingresa a el menu principal$/, function () {
 
 });
+Given(/^Que tengo conexion a internet$/, function () {
+
+});
+When(/^Apacho el boton de ingresar venta$/, function () {
+
+});
+Then(/^Se despliega un mensaje\/aleta de que se la logrado exitosamente\.$/, function () {
+
+});
+When(/^Apacho el boton de ingresar gasto$/, function () {
+
+});
+When(/^Apacho el boton de ingresar trabajador$/, function () {
+
+});
+Given(/^Que no tengo conexion a internet$/, function () {
+
+});
