@@ -14,6 +14,11 @@ import reportes_ventas from "./screens/reportes_ventas";
 import { firebase } from './Firebase';
 import {decode, encode} from 'base-64'
 import CC from "./screens/cc";
+import menu_ventas from "./screens/menu_ventas";
+import menu_cc from "./screens/menu_cc";
+import reportes_cc from "./screens/reportes_cc";
+import menu_personal from "./screens/menu_personal";
+import reportes_personal from "./screens/reportes_personal";
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
 
@@ -70,8 +75,13 @@ export default function App() {
                         <Stack.Screen name="login" component={login} />
                         <Stack.Screen name="registrations" component={registrations} />
                         <Stack.Screen name="menu" component={menu}/>
+                        <Stack.Screen name ="menu_personal" component={menu_personal}/>
+                        <Stack.Screen name ="reportes_personal" component={reportes_personal}/>
                         <Stack.Screen name ="personal" component={personal}/>
+                        <Stack.Screen name ="menu_cc" component={menu_cc}/>
+                        <Stack.Screen name ="reportes_cc" component={reportes_cc}/>
                         <Stack.Screen name ="cc" component={cc}/>
+                        <Stack.Screen name ="menu_ventas" component={menu_ventas}/>
                         <Stack.Screen name ="ventas" component={ventas}/>
                         <Stack.Screen name ="reportes_ventas" component={reportes_ventas}/>
                     </>
